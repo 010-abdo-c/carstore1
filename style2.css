@@ -169,37 +169,119 @@ header {
 /* 6. CONTACT FORM                          */
 /* ========================================= */
 
-.contact-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
+/* ========================================= */
+/* 6. CONTACT FORM (Refined Style)           */
+/* ========================================= */
+
+#order-form {
+    background: linear-gradient(180deg, var(--bg-color) 0%, #0a0a0a 100%);
 }
 
-.form-group { margin-bottom: 20px; }
+.contact-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 50px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
 
+/* Subtle glow effect behind the form */
+.contact-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(244, 217, 82, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.contact-form {
+    position: relative;
+    z-index: 1;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Input & Textarea Styling */
 .contact-form input, 
 .contact-form textarea, 
 .contact-form select {
     width: 100%;
-    padding: 15px;
-    background: var(--bg-color);
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.03); /* Subtle glass effect */
     border: 1px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 12px;
     color: var(--text-color);
+    font-size: 1rem;
+    font-family: inherit;
     outline: none;
-    transition: var(--transition);
+    transition: all var(--transition);
 }
 
-.contact-form input:focus, .contact-form textarea:focus {
+/* Focus States */
+.contact-form input:focus, 
+.contact-form textarea:focus, 
+.contact-form select:focus {
     border-color: var(--main-color);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(244, 217, 82, 0.05);
 }
 
+/* Placeholder Color */
+.contact-form ::placeholder {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Select Box Reset */
 .contact-form select {
+    cursor: pointer;
     appearance: none;
-    background: var(--bg-color) url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 15px center;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23f4d952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+}
+
+/* Form Button */
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    margin-top: 10px;
+    background: var(--main-color);
+    border: none;
+    border-radius: 12px;
+    color: #000;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.submit-btn:hover {
+    background: #e5cc48; /* Slightly darker gold */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(244, 217, 82, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 30px 20px;
+    }
 }
 
 /* ========================================= */
