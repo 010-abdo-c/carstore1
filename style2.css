@@ -1,754 +1,275 @@
 /* ========================================= */
-/* ROOT VARIABLES */
+/* 1. ROOT VARIABLES */
 /* ========================================= */
-
 :root {
-
     --bg-color: #050505;
     --card-bg: #111111;
     --secondary-bg: #181818;
-
     --main-color: #f4d952;
-
     --text-color: #ffffff;
     --gray-text: #a1a1a1;
-
-    --border-color:
-        rgba(255,255,255,0.08);
-
+    --border-color: rgba(255, 255, 255, 0.08);
     --transition: 0.3s ease;
-
-    --shadow:
-        0 10px 30px rgba(0,0,0,0.4);
-
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* ========================================= */
-/* RESET */
+/* 2. RESET & BASE STYLES */
 /* ========================================= */
-
 * {
-
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 html {
-
     scroll-behavior: smooth;
 }
 
 body {
-
-    font-family: 'Segoe UI', sans-serif;
-
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background: var(--bg-color);
-
     color: var(--text-color);
-
     line-height: 1.7;
-
     overflow-x: hidden;
 }
 
 img {
-
     max-width: 100%;
     display: block;
 }
 
 a {
-
     text-decoration: none;
     color: inherit;
+    transition: var(--transition);
 }
 
 ul {
-
     list-style: none;
 }
 
 section {
-
     padding: 100px 7%;
 }
 
-/* ========================================= */
-/* SCROLLBAR */
-/* ========================================= */
-
-::-webkit-scrollbar {
-
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-
-    background: #0d0d0d;
-}
-
-::-webkit-scrollbar-thumb {
-
-    background: var(--main-color);
-
-    border-radius: 10px;
+/* Scrollbar Customization */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0d0d0d; }
+::-webkit-scrollbar-thumb { 
+    background: var(--main-color); 
+    border-radius: 10px; 
 }
 
 /* ========================================= */
-/* NAVBAR */
+/* 3. NAVIGATION */
 /* ========================================= */
-
 header {
-
     position: sticky;
-
     top: 0;
-
     z-index: 999;
 }
 
 .main-nav {
-
-    background:
-        rgba(0,0,0,0.88);
-
+    background: rgba(0, 0, 0, 0.88);
     backdrop-filter: blur(12px);
-
-    border-bottom:
-        1px solid var(--border-color);
-
+    border-bottom: 1px solid var(--border-color);
     padding: 18px 7%;
-
     transition: var(--transition);
 }
 
 .main-nav ul {
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 28px;
 }
 
-.logo {
-
-    width: 95px;
-}
+.logo { width: 95px; }
 
 .main-nav a {
-
     padding: 12px 18px;
-
     border-radius: 8px;
-
     font-size: 0.95rem;
-
     font-weight: 500;
-
-    transition: var(--transition);
 }
 
-.main-nav a:hover {
-
+.main-nav a:hover, .main-nav a.active {
     background: var(--main-color);
-
     color: black;
 }
 
 /* ========================================= */
-/* HERO SECTION */
+/* 4. HERO SECTION */
 /* ========================================= */
-
 .hero-image {
-
     min-height: 100vh;
-
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.75),
-            rgba(0,0,0,0.75)
-        ),
-        url("imeages/heroq.png");
-
-    background-size: cover;
-
-    background-position: center;
-
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
+                url("imeages/heroq.png") center/cover no-repeat;
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     text-align: center;
-
     padding: 0 20px;
 }
 
 .hero-text {
-
     max-width: 850px;
-
-    animation: fadeUp 1s ease;
+    animation: fadeUp 1s ease forwards;
 }
 
 .hero-text h1 {
-
-    font-size: 4.5rem;
-
+    font-size: clamp(2rem, 8vw, 4.5rem);
     line-height: 1.2;
-
     margin-bottom: 20px;
 }
 
 .hero-text p {
-
     color: #d3d3d3;
-
     font-size: 1.2rem;
 }
 
 .hero-text button {
-
     margin-top: 35px;
-
     padding: 15px 38px;
-
     background: var(--main-color);
-
     border: none;
-
     border-radius: 10px;
-
-    color: black;
-
-    font-size: 1rem;
-
     font-weight: bold;
-
     cursor: pointer;
-
     transition: var(--transition);
 }
 
 .hero-text button:hover {
-
     transform: translateY(-6px);
-
-    box-shadow:
-        0 12px 25px rgba(244,217,82,0.25);
+    box-shadow: 0 12px 25px rgba(244, 217, 82, 0.25);
 }
 
 /* ========================================= */
-/* SECTION HEADERS */
+/* 5. SHARED COMPONENTS (CARDS & HEADERS) */
 /* ========================================= */
-
 .section-header {
-
     text-align: center;
-
     margin-bottom: 60px;
 }
 
 .section-header h1 {
-
-    font-size: 3rem;
-
+    font-size: clamp(2.2rem, 5vw, 3rem);
     margin-bottom: 15px;
 }
 
 .section-header p {
-
     color: var(--gray-text);
-
     max-width: 700px;
-
     margin: auto;
 }
 
-/* ========================================= */
-/* ABOUT SECTION */
-/* ========================================= */
-
-#About {
-
-    text-align: center;
-}
-
-.about-container {
-
+/* Reusable Grid Pattern */
+.about-container, .features-container, .catalog-grid, .reviews-container {
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(260px,1fr));
-
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-
     margin-top: 50px;
 }
 
-.about-card {
-
+/* Reusable Card Pattern */
+.about-card, .feature-card, .review-card, .car-card {
     background: var(--card-bg);
-
-    padding: 40px 25px;
-
-    border-radius: 20px;
-
     border: 1px solid var(--border-color);
-
+    border-radius: 20px;
     transition: var(--transition);
 }
 
-.about-card:hover {
+.about-card, .feature-card, .review-card { padding: 40px 25px; }
 
+.about-card:hover, .feature-card:hover, .review-card:hover {
     transform: translateY(-10px);
-
     background: var(--secondary-bg);
-
     box-shadow: var(--shadow);
 }
 
-.about-card h3 {
-
-    color: var(--main-color);
-
-    margin-bottom: 18px;
-
-    font-size: 1.4rem;
-}
-
-.about-card p {
-
-    color: var(--gray-text);
-}
-
 /* ========================================= */
-/* FEATURES */
+/* 6. CATALOG SPECIFICS */
 /* ========================================= */
-
-#why-buy {
-
-    text-align: center;
-}
-
-#why-buy h2 {
-
-    font-size: 2.8rem;
-}
-
-.features-container {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(250px,1fr));
-
-    gap: 30px;
-
-    margin-top: 60px;
-}
-
-.feature-card {
-
-    background: var(--card-bg);
-
-    padding: 35px 25px;
-
-    border-radius: 18px;
-
-    border: 1px solid rgba(244,217,82,0.15);
-
-    transition: var(--transition);
-}
-
-.feature-card:hover {
-
-    transform: translateY(-10px);
-
-    background: var(--secondary-bg);
-
-    box-shadow:
-        0 10px 30px rgba(244,217,82,0.08);
-}
-
-.feature-title {
-
-    display: block;
-
-    font-size: 1.2rem;
-
-    font-weight: bold;
-
-    margin-bottom: 15px;
-}
-
-.card-msg {
-
-    color: var(--gray-text);
-}
-
-/* ========================================= */
-/* CATALOG */
-/* ========================================= */
-
-.catalog-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(300px,1fr));
-
-    gap: 35px;
-}
-
-.car-card {
-
-    background: var(--card-bg);
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    border: 1px solid var(--border-color);
-
-    transition: 0.4s ease;
-}
-
-.car-card:hover {
-
-    transform: translateY(-12px);
-
-    box-shadow: var(--shadow);
-}
+.car-card { overflow: hidden; }
 
 .car-card img {
-
     width: 100%;
-
     height: 240px;
-
     object-fit: cover;
-
     transition: 0.5s ease;
 }
 
-.car-card:hover img {
+.car-card:hover img { transform: scale(1.05); }
 
-    transform: scale(1.05);
-}
+.car-card h4 { margin-top: 22px; font-size: 1.5rem; text-align: center; }
 
-.car-card h4 {
-
-    margin-top: 22px;
-
-    font-size: 1.5rem;
-
-    text-align: center;
-}
-
-.car-card p {
-
-    text-align: center;
-
-    color: var(--gray-text);
-
-    margin: 12px 0 22px;
-}
+.car-card p { text-align: center; color: var(--gray-text); margin: 12px 0 22px; }
 
 .car-card button {
-
     display: block;
-
-    margin:
-        0 auto 25px;
-
+    margin: 0 auto 25px;
     padding: 13px 30px;
-
     border: none;
-
     border-radius: 10px;
-
     background: var(--main-color);
-
-    color: black;
-
     font-weight: bold;
-
     cursor: pointer;
-
     transition: var(--transition);
 }
 
-.car-card button:hover {
-
-    transform: scale(1.05);
-
-    box-shadow:
-        0 8px 20px rgba(244,217,82,0.2);
-}
-
 /* ========================================= */
-/* REVIEWS */
+/* 7. FOOTER */
 /* ========================================= */
-
-#review-cards {
-
-    text-align: center;
-}
-
-#review-cards h2 {
-
-    font-size: 2.8rem;
-}
-
-#review-cards h5 {
-
-    margin-top: 12px;
-
-    color: var(--gray-text);
-}
-
-.reviews-container {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(280px,1fr));
-
-    gap: 30px;
-
-    margin-top: 60px;
-}
-
-.review-card {
-
-    background: var(--card-bg);
-
-    padding: 35px 25px;
-
-    border-radius: 18px;
-
-    border: 1px solid rgba(244,217,82,0.12);
-
-    transition: var(--transition);
-}
-
-.review-card:hover {
-
-    transform: translateY(-10px);
-
-    background: var(--secondary-bg);
-}
-
-.review-card p {
-
-    color: #d8d8d8;
-
-    margin-bottom: 20px;
-}
-
-.review-card span {
-
-    color: var(--main-color);
-
-    font-weight: bold;
-}
-
-/* ========================================= */
-/* FOOTER */
-/* ========================================= */
-
 #footer {
-
     background: #080808;
-
     padding: 90px 7% 30px;
 }
 
 .footer-container {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(250px,1fr));
-
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 50px;
 }
 
-.footer-column h4 {
+.footer-column h4 { color: var(--main-color); margin-bottom: 25px; }
 
-    color: var(--main-color);
-
-    margin-bottom: 25px;
-
-    font-size: 1.2rem;
-}
-
-.footer-column li {
-
-    margin-bottom: 18px;
-}
-
-.link-title {
-
-    display: block;
-
-    font-weight: 600;
-}
-
-.link-desc {
-
-    color: #777;
-
-    font-size: 0.9rem;
-}
-
-.footer-column a {
-
-    transition: var(--transition);
-}
-
-.footer-column a:hover {
-
-    color: var(--main-color);
-}
-
-hr {
-
-    border: none;
-
-    height: 1px;
-
-    background:
-        rgba(255,255,255,0.08);
-
-    margin: 50px 0 25px;
-}
+.footer-column li { margin-bottom: 18px; }
 
 .copyright {
-
     text-align: center;
-
     color: #666;
-
-    font-size: 0.95rem;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border-color);
 }
 
 /* ========================================= */
-/* REVEAL ANIMATION */
+/* 8. ANIMATIONS */
 /* ========================================= */
-
-.hidden {
-
-    opacity: 0;
-
-    transform: translateY(40px);
-}
+.hidden { opacity: 0; transform: translateY(40px); }
 
 .show {
-
     opacity: 1;
-
     transform: translateY(0);
-
-    transition:
-        all 0.8s ease;
+    transition: all 0.8s ease;
 }
-
-/* ========================================= */
-/* KEYFRAMES */
-/* ========================================= */
 
 @keyframes fadeUp {
-
-    from {
-
-        opacity: 0;
-
-        transform: translateY(40px);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ========================================= */
-/* RESPONSIVE */
+/* 9. RESPONSIVE QUERIES */
 /* ========================================= */
-
-@media (max-width: 992px) {
-
-    .hero-text h1 {
-
-        font-size: 3.3rem;
-    }
-}
-
 @media (max-width: 768px) {
-
-    .main-nav ul {
-
-        flex-wrap: wrap;
-
-        gap: 14px;
-    }
-
-    .hero-text h1 {
-
-        font-size: 2.6rem;
-    }
-
-    .hero-text p {
-
-        font-size: 1rem;
-    }
-
-    section {
-
-        padding: 80px 5%;
-    }
-
-    .section-header h1,
-    #why-buy h2,
-    #review-cards h2 {
-
-        font-size: 2.2rem;
-    }
-
-    .catalog-grid {
-
-        grid-template-columns: 1fr;
-    }
+    .main-nav ul { gap: 14px; }
+    section { padding: 80px 5%; }
+    .catalog-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
-
-    .hero-text h1 {
-
-        font-size: 2rem;
-    }
-
-    .hero-text button {
-
-        width: 100%;
-    }
-
-    .main-nav {
-
-        padding: 15px 4%;
-    }
-
-    section {
-
-        padding: 70px 4%;
-    }
+    .hero-text button { width: 100%; }
+    .main-nav { padding: 15px 4%; }
 }
