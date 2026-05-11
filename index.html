@@ -1,298 +1,190 @@
-/* --- إعدادات التصميم (Material Design 3 Theme) --- */
-:root {
-    --primary: #f4d952;      /* الأصفر المميز */
-    --background: #000000;   /* الخلفية السوداء */
-    --surface: #121212;      /* لون الكروت - أسود فاتح قليلاً */
-    --surface-hover: #1e1e1e;
-    --text-main: #ffffff;
-    --text-dim: #b3b3b3;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-OS | Premium Car Store</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="icon" type="image/x-icon" href="imeages/ilogo.png">
+</head>
+<body>
 
-/* --- Global Styles --- */
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-}
+<header>
+    <nav class="main-nav"> 
+        <ul>
+            <li><img src="imeages/ilogo.png" alt="Logo" class="logo"></li>
+            <li><a href="#Home" class="active">Home</a></li>
+            <li><a href="#About">About</a></li>
+            <li><a href="#catalog">Products</a></li>
+            <li><a href="#order-form">Contact</a></li> 
+            <li><a href="#review-cards">Reviews</a></li>
+        </ul>
+    </nav>
+</header>
 
-body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--background);
-    color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+<div class="hero-image" id="Home">
+    <div class="hero-text">
+        <h1>Experience Pure Performance</h1>
+        <p>Your one-stop destination for premium luxury and reliable vehicles.</p>
+        <button onclick="location.href='#catalog'">Explore Collection</button>
+    </div>
+</div>
 
-/* لتوسيط أي سيكشن في منتصف الشاشة */
-section {
-    max-width: 1200px; /* العرض الأقصى للمحتوى */
-    margin: 0 auto;    /* التوسيط السحري */
-    padding: 80px 20px;
-}
+<section id="why-buy">
+    <div class="section-header">
+        <h1>Why Clients Choose Us</h1>
+    </div>
+    <div class="features-container">
+        <div class="feature-card">
+            <span class="feature-title">10 Years Quality Guarantee</span>
+            <span class="card-msg">Full warranty on engine and parts</span>
+        </div>
+        <div class="feature-card">
+            <span class="feature-title">24/7 Customer Support</span>
+            <span class="card-msg">Always here to help you</span>
+        </div>
+        <div class="feature-card">
+            <span class="feature-title">Easy Return Policy</span>
+            <span class="card-msg">No questions asked</span>
+        </div>
+        <div class="feature-card">
+            <span class="feature-title">Resell Your Car Easily</span>
+            <span class="card-msg">We buy used cars too</span>
+        </div>
+    </div>
+</section>
 
-ul { list-style: none; }
-a { text-decoration: none; color: inherit; }
+<section id="catalog">
+    <div class="section-header">
+        <h1>Our Collection</h1>
+        <p>Explore our wide range of premium vehicles.</p>
+    </div>
+    <div class="catalog-grid">
+        <div class="car-card">
+            <img src="imeages/bmw2.png" alt="BMW XR3">
+            <h4>BMW XR3</h4>
+            <p>Price: $20,000</p>
+            <button>Buy Now</button>
+        </div>
+        <div class="car-card">
+            <img src="imeages/corola.png" alt="Toyota Corolla">
+            <h4>Toyota Corolla</h4>
+            <p>Price: $30,000</p>
+            <button>Buy Now</button>
+        </div>
+        <div class="car-card">
+            <img src="imeages/xibmw.png" alt="BMW IX">
+            <h4>BMW IX</h4>
+            <p>Price: $70,000</p>
+            <button>Buy Now</button>
+        </div> 
+        <div class="car-card">
+            <img src="imeages/range.png" alt="Range Rover">
+            <h4>Range Rover</h4>
+            <p>Price: $25,000</p>
+            <button>Buy Now</button>
+        </div>
+    </div>
+</section>
 
-/* --- Navbar --- */
-header {
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid #1a1a1a;
-}
+<section id="review-cards">
+    <div class="section-header">
+        <h1>Customer Reviews</h1>
+        <h5>We are trustworthy — +300 clients say so.</h5>
+    </div>
+    <div class="reviews-container">
+        <div class="review-card">
+            <p>"Great service and quality cars!"</p>
+            <span>- John D.</span>
+        </div>
+        <div class="review-card">
+            <p>"I love my new car, thanks to this store!"</p>
+            <span>- Sarah K.</span>
+        </div>
+        <div class="review-card">
+            <p>"Highly recommend for anyone looking for a reliable car."</p>
+            <span>- Mike L.</span>
+        </div>
+    </div>
+</section>
 
-.main-nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px 20px;
-}
+<section id="About">
+    <div class="section-header">
+        <h1>About Us</h1>
+        <p>Leading the market in providing premium vehicles with trusted service.</p>
+    </div>
+    <div class="about-container">
+        <div class="about-card">
+            <h3>Trusted By Hundreds</h3>
+            <p>More than 300 happy clients bought cars from our store successfully.</p>
+        </div>
+        <div class="about-card">
+            <h3>Premium Selection</h3>
+            <p>We carefully choose modern and reliable vehicles for our customers.</p>
+        </div>
+        <div class="about-card">
+            <h3>Fast Support</h3>
+            <p>Our expert team is available to help you anytime.</p>
+        </div>
+    </div>
+</section>
 
-.main-nav ul {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* سنتر اللينكات */
-    gap: 30px;
-}
+<section id="order-form">
+    <div class="section-header">
+        <h1>Get In Touch</h1>
+        <p>Have questions or want to schedule a test drive?</p>
+    </div>
+    <div class="contact-container">
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <select required>
+                    <option value="" disabled selected>Interested In...</option>
+                    <option value="Buy">Buying a Car</option>
+                    <option value="Sell">Selling a Car</option>
+                    <option value="Service">Maintenance</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+</section>
 
-.logo { height: 40px; }
+<footer id="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h4>Follow Us</h4>
+            <ul>
+                <li><a href="#"><span class="link-title">Facebook</span><span class="link-desc">Official Page</span></a></li>
+                <li><a href="#"><span class="link-title">Instagram</span><span class="link-desc">Latest Photos</span></a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Pages</h4>
+            <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#catalog">Catalog</a></li>
+                <li><a href="#order-form">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Contact</h4>
+            <div class="link-title">Email</div>
+            <div class="link-desc">info@carstore.com</div>
+        </div>
+    </div>
+    <hr>
+    <p class="copyright">© 2026 Auto-OS. All rights reserved.</p>
+</footer>
 
-.main-nav a {
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: var(--transition);
-    padding: 8px 12px;
-    border-radius: 4px;
-}
-
-.main-nav a:hover, .main-nav a.active {
-    color: var(--primary);
-    background: rgba(244, 217, 82, 0.1);
-}
-
-/* --- Hero Section --- */
-.hero-image {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url("imeages/heroq.png") center/cover no-repeat;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    max-width: 100%; /* الهيرو يأخذ العرض الكامل دائماً */
-}
-
-.hero-text h1 { 
-    font-size: clamp(2.5rem, 8vw, 4rem); /* حجم خط مرن */
-    font-weight: 800;
-    margin-bottom: 15px;
-    letter-spacing: -1px;
-}
-
-.hero-text p {
-    color: var(--text-dim);
-    font-size: 1.2rem;
-}
-
-.hero-text button {
-    margin-top: 30px;
-    padding: 15px 40px;
-    background: var(--primary);
-    border: none;
-    color: #000;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 50px; /* Material Pill shape */
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.hero-text button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(244, 217, 82, 0.2);
-}
-
-/* --- العناوين المشتركة --- */
-.section-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-header h1 {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 10px;
-}
-
-/* --- Features Section (Why Buy) --- */
-.features-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-}
-
-.feature-card {
-    background: var(--surface);
-    padding: 40px 30px;
-    width: 280px;
-    border-radius: 20px;
-    text-align: center;
-    border: 1px solid #222;
-    transition: var(--transition);
-}
-
-.feature-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-.feature-title { 
-    display: block; 
-    font-weight: bold; 
-    font-size: 1.2rem; 
-    color: var(--primary);
-    margin-bottom: 10px;
-}
-
-/* --- Catalog Grid --- */
-.catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.car-card {
-    background: var(--surface);
-    border-radius: 24px; /* زوايا دائرية عصرية */
-    overflow: hidden;
-    border: 1px solid #1a1a1a;
-    transition: var(--transition);
-}
-
-.car-card:hover {
-    transform: translateY(-5px);
-    border-color: #333;
-    background: var(--surface-hover);
-}
-
-.car-card img { 
-    width: 100%; 
-    height: 220px; 
-    object-fit: cover;
-    transition: 0.5s;
-}
-
-.car-card:hover img { transform: scale(1.05); }
-
-.car-card h4 { 
-    padding: 20px 20px 5px; 
-    font-size: 1.5rem; 
-}
-
-.car-card p {
-    padding: 0 20px;
-    color: var(--primary);
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.car-card button {
-    background: var(--primary);
-    border: none;
-    width: calc(100% - 40px);
-    padding: 12px;
-    margin: 20px;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.car-card button:hover { opacity: 0.9; }
-
-/* --- Reviews Section --- */
-.reviews-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.review-card {
-    background: #0a0a0a;
-    padding: 30px;
-    border-radius: 16px;
-    border-left: 4px solid var(--primary); /* علامة تمييز */
-    font-style: italic;
-}
-
-/* --- Contact Form --- */
-.contact-container {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.contact-form input, .contact-form select, .contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
-    background: #111;
-    border: 1px solid #333;
-    color: #fff;
-    border-radius: 12px;
-    outline: none;
-}
-
-.contact-form input:focus { border-color: var(--primary); }
-
-.submit-btn {
-    background: var(--primary);
-    color: #000;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-}
-
-/* --- Footer --- */
-#footer {
-    background: #050505;
-    padding: 80px 20px 30px;
-    border-top: 1px solid #111;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-column h4 { margin-bottom: 25px; color: var(--primary); text-transform: uppercase; }
-.footer-column ul li { margin-bottom: 15px; }
-.link-desc { color: #555; }
-
-.copyright { 
-    text-align: center; 
-    margin-top: 50px; 
-    color: #444; 
-    font-size: 0.8rem;
-    border-top: 1px solid #111;
-    padding-top: 20px;
-}
-
-/* --- الموبايل --- */
-@media (max-width: 768px) {
-    .main-nav ul { gap: 10px; }
-    .main-nav a { font-size: 0.75rem; padding: 5px; }
-    .hero-text h1 { font-size: 2.5rem; }
-}
+<script src="script.js"></script>
+</body>
+</html>
