@@ -127,6 +127,35 @@ hr { border: 0; border-top: 1px solid #333; margin: 40px 0; }
     border: 1px solid #f4d952;
     width: 300px;
 }
+/* --- Contact Form --- */
+.contact-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 12px;
+    outline: none;
+}
+
+.contact-form input:focus { border-color: var(--primary); }
+
+.submit-btn {
+    background: var(--primary);
+    color: #000;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
 
 /* --- Footer --- */
 #footer {
