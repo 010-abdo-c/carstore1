@@ -1,5 +1,5 @@
 /* ========================================= */
-/* 1. CORE SYSTEM (Variables & Reset)        */
+/* 1. CORE SYSTEM & VARIABLES               */
 /* ========================================= */
 
 :root {
@@ -25,7 +25,7 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', Roboto, sans-serif;
     background: var(--bg-color);
     color: var(--text-color);
     line-height: 1.7;
@@ -33,46 +33,7 @@ body {
 }
 
 /* ========================================= */
-/* 2. REUSABLE COMPONENTS                    */
-/* ========================================= */
-
-section { padding: 100px 7%; }
-
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-header h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-.section-header p {
-    color: var(--gray-text);
-    max-width: 700px;
-    margin: auto;
-}
-
-.btn-primary {
-    display: inline-block;
-    padding: 15px 38px;
-    background: var(--main-color);
-    border: none;
-    border-radius: 10px;
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(244, 217, 82, 0.25);
-}
-
-/* ========================================= */
-/* 3. NAVIGATION & HEADER                   */
+/* 2. NAVIGATION                             */
 /* ========================================= */
 
 header {
@@ -85,38 +46,44 @@ header {
     background: rgba(0, 0, 0, 0.88);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    padding: 15px 7%;
+    padding: 18px 7%;
+    transition: var(--transition);
 }
 
 .main-nav ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
+    gap: 28px;
 }
 
 .main-nav a {
-    padding: 10px 18px;
+    padding: 12px 18px;
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
     transition: var(--transition);
 }
 
-.main-nav a:hover, .main-nav a.active {
+.main-nav a:hover, 
+.main-nav a.active {
     background: var(--main-color);
     color: #000;
 }
 
-.logo { width: 90px; }
+.logo { width: 95px; }
 
 /* ========================================= */
-/* 4. HERO SECTION                          */
+/* 3. HERO & SECTIONS                        */
 /* ========================================= */
+
+section {
+    padding: 100px 7%;
+}
 
 .hero-image {
     min-height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("imeages/heroq.png") center/cover no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("imeages/heroq.png") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,21 +93,30 @@ header {
 .hero-text {
     max-width: 850px;
     opacity: 0;
-    transform: translateY(30px);
-    transition: 1s ease-out;
+    transform: translateY(40px);
 }
 
 .hero-text h1 {
     font-size: 4.5rem;
-    line-height: 1.1;
+    line-height: 1.2;
     margin-bottom: 20px;
 }
 
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h1 { font-size: 3rem; margin-bottom: 15px; }
+
 /* ========================================= */
-/* 5. GRID LAYOUTS (Catalog, About, Reviews) */
+/* 4. GRID COMPONENTS (Cards)                */
 /* ========================================= */
 
-.catalog-grid, .about-container, .features-container, .reviews-container {
+.catalog-grid, 
+.about-container, 
+.features-container, 
+.reviews-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
@@ -148,177 +124,118 @@ header {
 
 .car-card, .about-card, .feature-card, .review-card {
     background: var(--card-bg);
-    padding: 30px;
     border-radius: 20px;
     border: 1px solid var(--border-color);
     transition: var(--transition);
 }
 
-.car-card:hover, .about-card:hover, .feature-card:hover {
+.car-card:hover, .about-card:hover, .feature-card:hover, .review-card:hover {
     transform: translateY(-10px);
     background: var(--secondary-bg);
     box-shadow: var(--shadow);
 }
 
-.car-card { padding: 0; overflow: hidden; }
-.car-card img { width: 100%; height: 240px; object-fit: cover; }
-.car-card h4 { margin: 20px 0 10px; text-align: center; }
+/* Specific Card Adjustments */
+.car-card { overflow: hidden; }
+.car-card img { width: 100%; height: 240px; object-fit: cover; transition: 0.5s ease; }
+.car-card:hover img { transform: scale(1.05); }
+.car-card h4 { margin: 20px 0 10px; text-align: center; font-size: 1.5rem; }
 .car-card p { text-align: center; color: var(--gray-text); margin-bottom: 20px; }
-
-/* ========================================= */
-/* 6. CONTACT FORM                          */
-/* ========================================= */
-
-/* ========================================= */
-/* 6. CONTACT FORM (Refined Style)           */
-/* ========================================= */
-
-#order-form {
-    background: linear-gradient(180deg, var(--bg-color) 0%, #0a0a0a 100%);
+.car-card button {
+    display: block; margin: 0 auto 25px;
+    padding: 12px 28px; background: var(--main-color);
+    border: none; border-radius: 10px; font-weight: bold; cursor: pointer;
 }
+
+/* ========================================= */
+/* 5. CONTACT FORM (Refined)                 */
+/* ========================================= */
 
 .contact-container {
-    max-width: 700px;
+    max-width: 650px;
     margin: 0 auto;
     background: var(--card-bg);
-    padding: 50px;
+    padding: 45px;
     border-radius: 24px;
     border: 1px solid var(--border-color);
-    position: relative;
-    overflow: hidden;
+    box-shadow: var(--shadow);
 }
 
-/* Subtle glow effect behind the form */
-.contact-container::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(244, 217, 82, 0.03) 0%, transparent 70%);
-    pointer-events: none;
-}
+.form-group { margin-bottom: 20px; }
 
-.contact-form {
-    position: relative;
-    z-index: 1;
-}
-
-.form-group {
-    margin-bottom: 25px;
-    position: relative;
-}
-
-/* Input & Textarea Styling */
 .contact-form input, 
 .contact-form textarea, 
 .contact-form select {
     width: 100%;
-    padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.03); /* Subtle glass effect */
+    padding: 16px;
+    background: var(--bg-color);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     color: var(--text-color);
     font-size: 1rem;
-    font-family: inherit;
     outline: none;
-    transition: all var(--transition);
+    transition: var(--transition);
 }
 
-/* Focus States */
 .contact-form input:focus, 
-.contact-form textarea:focus, 
-.contact-form select:focus {
+.contact-form textarea:focus {
     border-color: var(--main-color);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 15px rgba(244, 217, 82, 0.05);
 }
 
-/* Placeholder Color */
-.contact-form ::placeholder {
-    color: #555;
-    font-size: 0.9rem;
-}
-
-/* Select Box Reset */
-.contact-form select {
-    cursor: pointer;
-    appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23f4d952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
-    background-repeat: no-repeat;
-    background-position: right 20px center;
-}
-
-/* Form Button */
 .submit-btn {
     width: 100%;
-    padding: 18px;
-    margin-top: 10px;
+    padding: 16px;
     background: var(--main-color);
     border: none;
     border-radius: 12px;
     color: #000;
-    font-weight: 700;
+    font-weight: bold;
     font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
     cursor: pointer;
-    transition: all var(--transition);
+    transition: var(--transition);
 }
 
 .submit-btn:hover {
-    background: #e5cc48; /* Slightly darker gold */
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(244, 217, 82, 0.3);
-}
-
-.submit-btn:active {
-    transform: translateY(0);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .contact-container {
-        padding: 30px 20px;
-    }
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(244, 217, 82, 0.3);
 }
 
 /* ========================================= */
-/* 7. FOOTER & UTILITIES                    */
+/* 6. UTILITIES & ANIMATIONS                 */
 /* ========================================= */
-
-#footer { background: #080808; padding: 80px 7% 30px; }
-
-.footer-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-}
 
 .floating-whatsapp {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
+    bottom: 30px;
+    right: 30px;
     background: #25d366;
+    color: #fff;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     font-size: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 1000;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: var(--transition);
 }
 
+.floating-whatsapp:hover { transform: scale(1.1); }
+
+.hidden { opacity: 0; transform: translateY(30px); }
+.show { opacity: 1; transform: translateY(0); transition: all 0.8s ease-out; }
+
 /* ========================================= */
-/* 8. MEDIA QUERIES                         */
+/* 7. RESPONSIVE                             */
 /* ========================================= */
 
 @media (max-width: 768px) {
     .hero-text h1 { font-size: 2.8rem; }
     .section-header h1 { font-size: 2.2rem; }
-    section { padding: 60px 5%; }
-    .main-nav ul { gap: 10px; }
+    .main-nav ul { gap: 12px; }
+    section { padding: 70px 5%; }
+    .contact-container { padding: 30px 20px; }
 }
