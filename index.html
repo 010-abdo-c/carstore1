@@ -1,190 +1,221 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-OS | Premium Car Store</title>
-    <link rel="stylesheet" href="style2.css">
-    <link rel="icon" type="image/x-icon" href="imeages/ilogo.png">
-</head>
-<body>
+/* أساسيات التصميم - Material Design 3 */
+:root {
+    --primary: #FFD700; /* أصفر ذهبي */
+    --on-primary: #000000;
+    --background: #121212; /* أسود معتم (Material Dark Theme) */
+    --surface: #1E1E1E; /* لون البطاقات */
+    --on-surface: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-<header>
-    <nav class="main-nav"> 
-        <ul>
-            <li><img src="imeages/ilogo.png" alt="Logo" class="logo"></li>
-            <li><a href="#Home" class="active">Home</a></li>
-            <li><a href="#About">About</a></li>
-            <li><a href="#catalog">Products</a></li>
-            <li><a href="#order-form">Contact</a></li> 
-            <li><a href="#review-cards">Reviews</a></li>
-        </ul>
-    </nav>
-</header>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
 
-<div class="hero-image" id="Home">
-    <div class="hero-text">
-        <h1>Experience Pure Performance</h1>
-        <p>Your one-stop destination for premium luxury and reliable vehicles.</p>
-        <button onclick="location.href='#catalog'">Explore Collection</button>
-    </div>
-</div>
+body {
+    background-color: var(--background);
+    color: var(--on-surface);
+    line-height: 1.6;
+}
 
-<section id="why-buy">
-    <div class="section-header">
-        <h1>Why Clients Choose Us</h1>
-    </div>
-    <div class="features-container">
-        <div class="feature-card">
-            <span class="feature-title">10 Years Quality Guarantee</span>
-            <span class="card-msg">Full warranty on engine and parts</span>
-        </div>
-        <div class="feature-card">
-            <span class="feature-title">24/7 Customer Support</span>
-            <span class="card-msg">Always here to help you</span>
-        </div>
-        <div class="feature-card">
-            <span class="feature-title">Easy Return Policy</span>
-            <span class="card-msg">No questions asked</span>
-        </div>
-        <div class="feature-card">
-            <span class="feature-title">Resell Your Car Easily</span>
-            <span class="card-msg">We buy used cars too</span>
-        </div>
-    </div>
-</section>
+/* الهيدر والتنقل */
+header {
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
 
-<section id="catalog">
-    <div class="section-header">
-        <h1>Our Collection</h1>
-        <p>Explore our wide range of premium vehicles.</p>
-    </div>
-    <div class="catalog-grid">
-        <div class="car-card">
-            <img src="imeages/bmw2.png" alt="BMW XR3">
-            <h4>BMW XR3</h4>
-            <p>Price: $20,000</p>
-            <button>Buy Now</button>
-        </div>
-        <div class="car-card">
-            <img src="imeages/corola.png" alt="Toyota Corolla">
-            <h4>Toyota Corolla</h4>
-            <p>Price: $30,000</p>
-            <button>Buy Now</button>
-        </div>
-        <div class="car-card">
-            <img src="imeages/xibmw.png" alt="BMW IX">
-            <h4>BMW IX</h4>
-            <p>Price: $70,000</p>
-            <button>Buy Now</button>
-        </div> 
-        <div class="car-card">
-            <img src="imeages/range.png" alt="Range Rover">
-            <h4>Range Rover</h4>
-            <p>Price: $25,000</p>
-            <button>Buy Now</button>
-        </div>
-    </div>
-</section>
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 1rem;
+}
 
-<section id="review-cards">
-    <div class="section-header">
-        <h1>Customer Reviews</h1>
-        <h5>We are trustworthy — +300 clients say so.</h5>
-    </div>
-    <div class="reviews-container">
-        <div class="review-card">
-            <p>"Great service and quality cars!"</p>
-            <span>- John D.</span>
-        </div>
-        <div class="review-card">
-            <p>"I love my new car, thanks to this store!"</p>
-            <span>- Sarah K.</span>
-        </div>
-        <div class="review-card">
-            <p>"Highly recommend for anyone looking for a reliable car."</p>
-            <span>- Mike L.</span>
-        </div>
-    </div>
-</section>
+.logo {
+    height: 40px;
+    margin-right: 2rem;
+}
 
-<section id="About">
-    <div class="section-header">
-        <h1>About Us</h1>
-        <p>Leading the market in providing premium vehicles with trusted service.</p>
-    </div>
-    <div class="about-container">
-        <div class="about-card">
-            <h3>Trusted By Hundreds</h3>
-            <p>More than 300 happy clients bought cars from our store successfully.</p>
-        </div>
-        <div class="about-card">
-            <h3>Premium Selection</h3>
-            <p>We carefully choose modern and reliable vehicles for our customers.</p>
-        </div>
-        <div class="about-card">
-            <h3>Fast Support</h3>
-            <p>Our expert team is available to help you anytime.</p>
-        </div>
-    </div>
-</section>
+.main-nav a {
+    color: var(--on-surface);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: var(--transition);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
 
-<section id="order-form">
-    <div class="section-header">
-        <h1>Get In Touch</h1>
-        <p>Have questions or want to schedule a test drive?</p>
-    </div>
-    <div class="contact-container">
-        <form class="contact-form">
-            <div class="form-group">
-                <input type="text" placeholder="Full Name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" placeholder="Email Address" required>
-            </div>
-            <div class="form-group">
-                <select required>
-                    <option value="" disabled selected>Interested In...</option>
-                    <option value="Buy">Buying a Car</option>
-                    <option value="Sell">Selling a Car</option>
-                    <option value="Service">Maintenance</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-    </div>
-</section>
+.main-nav a:hover, .main-nav a.active {
+    color: var(--primary);
+}
 
-<footer id="footer">
-    <div class="footer-container">
-        <div class="footer-column">
-            <h4>Follow Us</h4>
-            <ul>
-                <li><a href="#"><span class="link-title">Facebook</span><span class="link-desc">Official Page</span></a></li>
-                <li><a href="#"><span class="link-title">Instagram</span><span class="link-desc">Latest Photos</span></a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>Pages</h4>
-            <ul>
-                <li><a href="#Home">Home</a></li>
-                <li><a href="#catalog">Catalog</a></li>
-                <li><a href="#order-form">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>Contact</h4>
-            <div class="link-title">Email</div>
-            <div class="link-desc">info@carstore.com</div>
-        </div>
-    </div>
-    <hr>
-    <p class="copyright">© 2026 Auto-OS. All rights reserved.</p>
-</footer>
+/* قسم الهيرو (البداية) */
+.hero-image {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('imeages/hero-bg.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+.hero-text h1 {
+    font-size: 3.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.hero-text button {
+    background-color: var(--primary);
+    color: var(--on-primary);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1.5rem;
+}
+
+.hero-text button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* العناوين */
+.section-header {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+}
+
+.section-header h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* البطاقات (Cards) - تطبيق الـ Elevation */
+.features-container, .catalog-grid, .reviews-container, .about-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 2rem 10%;
+}
+
+.feature-card, .car-card, .review-card, .about-card {
+    background-color: var(--surface);
+    padding: 2rem;
+    border-radius: 16px;
+    transition: var(--transition);
+    border: 1px solid #333;
+}
+
+.car-card:hover {
+    transform: scale(1.03);
+    border-color: var(--primary);
+}
+
+.car-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.car-card h4 { color: var(--primary); margin-bottom: 0.5rem; }
+
+.car-card button {
+    width: 100%;
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.car-card button:hover {
+    background: var(--primary);
+    color: var(--on-primary);
+}
+
+/* النموذج (Form) */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1.5rem;
+    background: #252525;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 8px;
+}
+
+.contact-form input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.submit-btn {
+    background-color: var(--primary);
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* التذييل (Footer) */
+footer {
+    background-color: #000;
+    padding: 3rem 10% 1rem;
+    margin-top: 4rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-column h4 { color: var(--primary); margin-bottom: 1rem; }
+
+.footer-column ul { list-style: none; }
+
+.footer-column a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-column a:hover { color: var(--primary); }
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+hr { border: 0; border-top: 1px solid #333; margin: 2rem 0; }
