@@ -1,122 +1,135 @@
-// ======================================
-// DOM ELEMENTS
-// ======================================
-
+/* ========================================= */
+/* 1. DOM ELEMENTS                           */
+/* ========================================= */
 const navbar = document.querySelector('.main-nav');
 const heroText = document.querySelector('.hero-text');
 const cards = document.querySelectorAll('.feature-card, .car-card, .review-card, .about-card');
 const buyButtons = document.querySelectorAll('.car-card button');
 const navLinks = document.querySelectorAll('a[href^="#"]');
+const contactForm = document.querySelector('.contact-form');
 
-// ======================================
-// SMOOTH SCROLL
-// ======================================
-
+/* ========================================= */
+/* 2. SMOOTH SCROLL                          */
+/* ========================================= */
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-        e.preventDefault();
         const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        if(targetSection){
-            targetSection.scrollIntoView({
-                behavior: 'smooth'
-            });
+        if (targetId.startsWith('#')) {
+            e.preventDefault();
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     });
 });
 
-// ======================================
-// WHATSAPP BUY BUTTONS
-// ======================================
-
+/* ========================================= */
+/* 3. WHATSAPP BUY BUTTONS (Catalog)         */
+/* ========================================= */
 buyButtons.forEach(button => {
     button.addEventListener('click', () => {
-        const carCard = button.parentElement;
+        const carCard = button.closest('.car-card');
         const carName = carCard.querySelector('h4').innerText;
         const carPrice = carCard.querySelector('p').innerText;
 
-        const message = `Hello,
-I want to buy:
-
-🚗 Car: ${carName}
-💰 ${carPrice}
-
-Please contact me.`;
-
+        const message = `Hello,\nI am interested in buying:\n\n🚗 Car: ${carName}\n💰 ${carPrice}\n\nPlease provide more details.`;
         const whatsappLink = `https://wa.me/201093598928?text=${encodeURIComponent(message)}`;
 
         window.open(whatsappLink, '_blank');
     });
 });
 
-// ======================================
-// NAVBAR SHADOW ON SCROLL
-// ======================================
+/* ========================================= */
+/* 4. CONTACT FORM AUTOMATION                */
+/* ========================================= */
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = contactForm.querySelector('input[type="text"]').value;
+        const email = contactForm.querySelector('input[type="email"]').value;
+        const service = contactForm.querySelector('select').value;
+        const msg = contactForm.querySelector('textarea').value;
 
+        const whatsappMessage = `*New Website Inquiry*\n\n` +
+            `*Name:* ${name}\n` +
+            `*Email:* ${email}\n` +
+            `*Interest:* ${service}\n` +
+            `*Message:* ${msg}`;
+
+        window.open(`https://wa.me/201093598928?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+    });
+}
+
+/* ========================================= */
+/* 5. SCROLL EFFECTS (Navbar & Active Links) */
+/* ========================================= */
 window.addEventListener('scroll', () => {
-    if(window.scrollY > 50){
+    // Navbar Background Toggle
+    if (window.scrollY > 50) {
         navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
         navbar.style.background = 'rgba(0,0,0,0.95)';
     } else {
         navbar.style.boxShadow = 'none';
         navbar.style.background = 'rgba(0,0,0,0.85)';
     }
-});
 
-// ======================================
-// REVEAL ANIMATION
-// ======================================
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
-        }
-    });
-}, { threshold: 0.15 });
-
-cards.forEach(card => {
-    card.classList.add('hidden');
-    observer.observe(card);
-});
-
-// ======================================
-// HERO ANIMATION
-// ======================================
-
-window.addEventListener('load', () => {
-    heroText.style.opacity = '1';
-    heroText.style.transform = 'translateY(0)';
-});
-
-// ======================================
-// ACTIVE NAV LINK
-// ======================================
-
-window.addEventListener('scroll', () => {
+    // Active Link State
     let current = '';
     document.querySelectorAll('section').forEach(section => {
         const sectionTop = section.offsetTop - 200;
-        if(window.scrollY >= sectionTop){
+        if (window.scrollY >= sectionTop) {
             current = section.getAttribute('id');
         }
     });
 
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if(link.getAttribute('href') === `#${current}`){
+        if (link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');
         }
     });
 });
 
-// ======================================
-// DOM CREATED ELEMENT (Floating WhatsApp)
-// ======================================
+/* ========================================= */
+/* 6. REVEAL ANIMATIONS (Intersection Obs)   */
+/* ========================================= */
+const observerOptions = { threshold: 0.15 };
 
-const whatsappBtn = document.createElement('a');
-whatsappBtn.href = 'https://wa.me/201093598928';
-whatsappBtn.target = '_blank';
-whatsappBtn.innerHTML = '💬';
-whatsappBtn.classList.add('floating-whatsapp');
-document.body.appendChild(whatsappBtn);
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, observerOptions);
+
+cards.forEach(card => {
+    card.classList.add('hidden');
+    observer.observe(card);
+});
+
+/* ========================================= */
+/* 7. PAGE LOAD INITIALIZATION               */
+/* ========================================= */
+window.addEventListener('load', () => {
+    if (heroText) {
+        heroText.style.opacity = '1';
+        heroText.style.transform = 'translateY(0)';
+    }
+});
+
+/* ========================================= */
+/* 8. FLOATING WHATSAPP CREATION             */
+/* ========================================= */
+const createFloatingBtn = () => {
+    const whatsappBtn = document.createElement('a');
+    whatsappBtn.href = 'https://wa.me/201093598928';
+    whatsappBtn.target = '_blank';
+    whatsappBtn.innerHTML = '💬'; 
+    whatsappBtn.classList.add('floating-whatsapp');
+    document.body.appendChild(whatsappBtn);
+};
+
+createFloatingBtn();
