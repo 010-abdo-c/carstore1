@@ -6,7 +6,7 @@ const heroText = document.querySelector('.hero-text');
 const cards = document.querySelectorAll('.feature-card, .car-card, .review-card, .about-card');
 const buyButtons = document.querySelectorAll('.car-card button');
 const navLinks = document.querySelectorAll('a[href^="#"]');
-const contactForm = document.querySelector('.contact-form');
+const contactForm = document.querySelector('#contact-form');
 
 /* ========================================= */
 /* 2. SMOOTH SCROLL                          */
@@ -14,7 +14,7 @@ const contactForm = document.querySelector('.contact-form');
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
-        if (targetId.startsWith('#')) {
+        if (targetId.startsWith('#') && targetId.length > 1) {
             e.preventDefault();
             const targetSection = document.querySelector(targetId);
             if (targetSection) {
@@ -47,16 +47,25 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const service = contactForm.querySelector('select').value;
-        const msg = contactForm.querySelector('textarea').value;
+        const name = contactForm.querySelector('#username').value;
+        const phone = contactForm.querySelector('#phonenum').value;
+        const email = contactForm.querySelector('#email').value;
+        const visitDate = contactForm.querySelector('#date1').value;
+        
+        // Get selected vehicles
+        const vehicleCheckboxes = contactForm.querySelectorAll('input[name="vehicle[]"]:checked');
+        let selectedVehicles = [];
+        vehicleCheckboxes.forEach((cb) => {
+            selectedVehicles.push(cb.value);
+        });
+        const vehiclesText = selectedVehicles.length > 0 ? selectedVehicles.join(', ') : 'None selected';
 
-        const whatsappMessage = `*New Website Inquiry*\n\n` +
+        const whatsappMessage = `*New Appointment Request*\n\n` +
             `*Name:* ${name}\n` +
+            `*Phone:* ${phone}\n` +
             `*Email:* ${email}\n` +
-            `*Interest:* ${service}\n` +
-            `*Message:* ${msg}`;
+            `*Visit Date:* ${visitDate}\n` +
+            `*Interested in:* ${vehiclesText}`;
 
         window.open(`https://wa.me/201093598928?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
     });
@@ -67,12 +76,14 @@ if (contactForm) {
 /* ========================================= */
 window.addEventListener('scroll', () => {
     // Navbar Background Toggle
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
-        navbar.style.background = 'rgba(0,0,0,0.95)';
-    } else {
-        navbar.style.boxShadow = 'none';
-        navbar.style.background = 'rgba(0,0,0,0.85)';
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
+            navbar.style.background = 'rgba(0,0,0,0.95)';
+        } else {
+            navbar.style.boxShadow = 'none';
+            navbar.style.background = 'rgba(0,0,0,0.85)';
+        }
     }
 
     // Active Link State
@@ -86,7 +97,7 @@ window.addEventListener('scroll', () => {
 
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        if (current && link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');
         }
     });
@@ -129,6 +140,7 @@ const createFloatingBtn = () => {
     whatsappBtn.target = '_blank';
     whatsappBtn.innerHTML = '💬'; 
     whatsappBtn.classList.add('floating-whatsapp');
+    whatsappBtn.style.cssText = 'position: fixed; bottom: 20px; right: 20px; font-size: 30px; background-color: #25d366; color: white; border-radius: 50%; padding: 15px; text-decoration: none; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1000;';
     document.body.appendChild(whatsappBtn);
 };
 
