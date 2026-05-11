@@ -1,221 +1,298 @@
-/* أساسيات التصميم - Material Design 3 */
+/* --- إعدادات التصميم (Material Design 3 Theme) --- */
 :root {
-    --primary: #FFD700; /* أصفر ذهبي */
-    --on-primary: #000000;
-    --background: #121212; /* أسود معتم (Material Dark Theme) */
-    --surface: #1E1E1E; /* لون البطاقات */
-    --on-surface: #FFFFFF;
-    --text-secondary: #B0B0B0;
+    --primary: #f4d952;      /* الأصفر المميز */
+    --background: #000000;   /* الخلفية السوداء */
+    --surface: #121212;      /* لون الكروت - أسود فاتح قليلاً */
+    --surface-hover: #1e1e1e;
+    --text-main: #ffffff;
+    --text-dim: #b3b3b3;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', 'Segoe UI', sans-serif;
-    scroll-behavior: smooth;
+/* --- Global Styles --- */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
 }
 
 body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--background);
-    color: var(--on-surface);
+    color: var(--text-main);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* الهيدر والتنقل */
+/* لتوسيط أي سيكشن في منتصف الشاشة */
+section {
+    max-width: 1200px; /* العرض الأقصى للمحتوى */
+    margin: 0 auto;    /* التوسيط السحري */
+    padding: 80px 20px;
+}
+
+ul { list-style: none; }
+a { text-decoration: none; color: inherit; }
+
+/* --- Navbar --- */
 header {
-    background-color: rgba(18, 18, 18, 0.95);
+    background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(10px);
-    position: fixed;
-    width: 100%;
+    position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.main-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
 }
 
 .main-nav ul {
     display: flex;
-    justify-content: center;
     align-items: center;
-    list-style: none;
-    padding: 1rem;
+    justify-content: center; /* سنتر اللينكات */
+    gap: 30px;
 }
 
-.logo {
-    height: 40px;
-    margin-right: 2rem;
-}
+.logo { height: 40px; }
 
 .main-nav a {
-    color: var(--on-surface);
-    text-decoration: none;
-    margin: 0 15px;
     font-weight: 500;
-    transition: var(--transition);
-    text-transform: uppercase;
     font-size: 0.9rem;
+    text-transform: uppercase;
     letter-spacing: 1px;
+    transition: var(--transition);
+    padding: 8px 12px;
+    border-radius: 4px;
 }
 
 .main-nav a:hover, .main-nav a.active {
     color: var(--primary);
+    background: rgba(244, 217, 82, 0.1);
 }
 
-/* قسم الهيرو (البداية) */
+/* --- Hero Section --- */
 .hero-image {
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('imeages/hero-bg.jpg') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url("imeages/heroq.png") center/cover no-repeat;
+    height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    max-width: 100%; /* الهيرو يأخذ العرض الكامل دائماً */
 }
 
-.hero-text h1 {
-    font-size: 3.5rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
+.hero-text h1 { 
+    font-size: clamp(2.5rem, 8vw, 4rem); /* حجم خط مرن */
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.hero-text p {
+    color: var(--text-dim);
+    font-size: 1.2rem;
 }
 
 .hero-text button {
-    background-color: var(--primary);
-    color: var(--on-primary);
+    margin-top: 30px;
+    padding: 15px 40px;
+    background: var(--primary);
     border: none;
-    padding: 12px 30px;
-    border-radius: 50px;
+    color: #000;
     font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px; /* Material Pill shape */
     cursor: pointer;
     transition: var(--transition);
-    margin-top: 1.5rem;
 }
 
 .hero-text button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(244, 217, 82, 0.2);
 }
 
-/* العناوين */
+/* --- العناوين المشتركة --- */
 .section-header {
     text-align: center;
-    padding: 4rem 1rem 2rem;
+    margin-bottom: 50px;
 }
 
 .section-header h1 {
-    color: var(--primary);
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
 }
 
-/* البطاقات (Cards) - تطبيق الـ Elevation */
-.features-container, .catalog-grid, .reviews-container, .about-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 2rem 10%;
+/* --- Features Section (Why Buy) --- */
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
 }
 
-.feature-card, .car-card, .review-card, .about-card {
-    background-color: var(--surface);
-    padding: 2rem;
-    border-radius: 16px;
+.feature-card {
+    background: var(--surface);
+    padding: 40px 30px;
+    width: 280px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #222;
     transition: var(--transition);
-    border: 1px solid #333;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.feature-title { 
+    display: block; 
+    font-weight: bold; 
+    font-size: 1.2rem; 
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+/* --- Catalog Grid --- */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.car-card {
+    background: var(--surface);
+    border-radius: 24px; /* زوايا دائرية عصرية */
+    overflow: hidden;
+    border: 1px solid #1a1a1a;
+    transition: var(--transition);
 }
 
 .car-card:hover {
-    transform: scale(1.03);
-    border-color: var(--primary);
+    transform: translateY(-5px);
+    border-color: #333;
+    background: var(--surface-hover);
 }
 
-.car-card img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+.car-card img { 
+    width: 100%; 
+    height: 220px; 
+    object-fit: cover;
+    transition: 0.5s;
 }
 
-.car-card h4 { color: var(--primary); margin-bottom: 0.5rem; }
+.car-card:hover img { transform: scale(1.05); }
+
+.car-card h4 { 
+    padding: 20px 20px 5px; 
+    font-size: 1.5rem; 
+}
+
+.car-card p {
+    padding: 0 20px;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
 
 .car-card button {
-    width: 100%;
-    background: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 1rem;
+    background: var(--primary);
+    border: none;
+    width: calc(100% - 40px);
+    padding: 12px;
+    margin: 20px;
+    border-radius: 12px;
+    font-weight: bold;
     cursor: pointer;
     transition: var(--transition);
 }
 
-.car-card button:hover {
-    background: var(--primary);
-    color: var(--on-primary);
+.car-card button:hover { opacity: 0.9; }
+
+/* --- Reviews Section --- */
+.reviews-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-/* النموذج (Form) */
+.review-card {
+    background: #0a0a0a;
+    padding: 30px;
+    border-radius: 16px;
+    border-left: 4px solid var(--primary); /* علامة تمييز */
+    font-style: italic;
+}
+
+/* --- Contact Form --- */
 .contact-container {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
 .contact-form input, .contact-form select, .contact-form textarea {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 1.5rem;
-    background: #252525;
-    border: 1px solid #444;
-    color: white;
-    border-radius: 8px;
-}
-
-.contact-form input:focus {
-    border-color: var(--primary);
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 12px;
     outline: none;
 }
 
+.contact-form input:focus { border-color: var(--primary); }
+
 .submit-btn {
-    background-color: var(--primary);
-    width: 100%;
-    padding: 15px;
+    background: var(--primary);
+    color: #000;
+    padding: 15px 30px;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
+    width: 100%;
 }
 
-/* التذييل (Footer) */
-footer {
-    background-color: #000;
-    padding: 3rem 10% 1rem;
-    margin-top: 4rem;
+/* --- Footer --- */
+#footer {
+    background: #050505;
+    padding: 80px 20px 30px;
+    border-top: 1px solid #111;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.footer-column h4 { color: var(--primary); margin-bottom: 1rem; }
+.footer-column h4 { margin-bottom: 25px; color: var(--primary); text-transform: uppercase; }
+.footer-column ul li { margin-bottom: 15px; }
+.link-desc { color: #555; }
 
-.footer-column ul { list-style: none; }
-
-.footer-column a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-.footer-column a:hover { color: var(--primary); }
-
-.copyright {
-    text-align: center;
-    padding-top: 2rem;
-    color: #666;
+.copyright { 
+    text-align: center; 
+    margin-top: 50px; 
+    color: #444; 
     font-size: 0.8rem;
+    border-top: 1px solid #111;
+    padding-top: 20px;
 }
 
-hr { border: 0; border-top: 1px solid #333; margin: 2rem 0; }
+/* --- الموبايل --- */
+@media (max-width: 768px) {
+    .main-nav ul { gap: 10px; }
+    .main-nav a { font-size: 0.75rem; padding: 5px; }
+    .hero-text h1 { font-size: 2.5rem; }
+}
